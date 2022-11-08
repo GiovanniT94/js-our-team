@@ -73,3 +73,36 @@ const addBtn = document.getElementById('add-btn');
 const submitBtn = document.getElementById('submit');
 
 
+function addForm(){
+    const newForm = document.getElementById('new-member-form').classList.remove("d-none");
+    newForm.classList.add("show");
+}
+
+
+function collectData(){
+
+    let newName = document.getElementById('field-name').value;
+    let newLastName = document.getElementById('field-last-name').value;
+    let newRole = document.getElementById('field-role').value;
+    let newImage = document.getElementById('field-image').value;
+
+    const newMember = {
+        name: newName,
+        last_name: newLastName,
+        role: newRole,
+        image: newImage
+    }
+    team.push(newMember);
+    console.log(newMember); 
+    const newInfoDiv = printOneCard(newMember);
+    container.append(newInfoDiv); 
+   
+    document.getElementById('field-name').value = '';
+    document.getElementById('field-last-name').value = '';
+    document.getElementById('field-role').value = '';
+    document.getElementById('field-image').value = '';
+}
+
+addBtn.addEventListener('click', addForm);
+
+submitBtn.addEventListener('click', collectData);
